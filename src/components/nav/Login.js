@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../../css/stylesheet.css'
+import {Link} from 'react-router-dom'
 
 export default class Login extends Component {
     render() {
@@ -31,7 +32,7 @@ export default class Login extends Component {
                             <button className="btn btn-primary btn-block mt-4 mb-3 ">Login</button>
 
                             <hr></hr>                              
-                             <span>Create new an account? <a href="/signup" className="text-primary">Sign up</a> </span>
+                             <span>Create new an account? <Link to="/signup" className="text-primary">Sign up</Link> </span>
                         </form>
                     </div>
                 </div>

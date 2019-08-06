@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+
 
 export default class SignUp extends Component {
     render() {
@@ -39,7 +41,7 @@ export default class SignUp extends Component {
                             <button className="btn btn-primary btn-block mt-4 mb-3 ">SignUp</button>
 
                             <hr></hr>                              
-                             <span>Aready have an account? <a href="/login" className="text-primary">Sign in</a> </span>
+                             <span>Aready have an account? <Link to="/login" className="text-primary">Sign in</Link> </span>
                         </form>
                     </div>
                 </div>
