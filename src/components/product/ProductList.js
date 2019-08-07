@@ -51,7 +51,7 @@ export default class ProductList extends Component {
     }
 
     render() {
-        const {value,handleChange,handleSubmit} = this.props
+        const {handleDetails,value,handleChange,handleSubmit} = this.props
         return (
             <Fragment>
                 <ProductSearch value={value} handleChange={handleChange} handleSubmit={handleSubmit}/>
@@ -64,7 +64,10 @@ export default class ProductList extends Component {
                     
                     <div className="row">
                        {this.state.products.map(product=>{
-                           return <Product key={product.produc_id} product={product}/>
+                           return <Product key={product.produc_id} 
+                                           product={product}
+                                           handleDetails={handleDetails}
+                                           />
                        })}
                     </div>
                 </div>

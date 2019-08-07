@@ -5,6 +5,7 @@ export default class Product extends Component {
     
     render() {
         const { avatar, title, pulisher, source_url, produc_id } = this.props.product
+        const {handleDetails}=this.props
         return (
             <Fragment>
                 <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
@@ -16,7 +17,9 @@ export default class Product extends Component {
                         </div>
 
                         <div className="card-footer">
-                            <button type="button" className="btn btn-primary text-capitalize">details</button>
+                            <button type="button" className="btn btn-primary text-capitalize"
+                             onClick={()=>handleDetails(0,produc_id)}
+                            >details</button>
                              <Link to={source_url} className="btn btn-success mx-2 text-capitalize">Product URL</Link>
                         </div>
 

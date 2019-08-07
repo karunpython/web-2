@@ -14,12 +14,15 @@ export default class ProductDetails extends Component {
 
     render() {
         const {avatar,title,pulisher,source_url,items}=this.state
+        const {handleIndex}=this.props
         return (
             <Fragment>
-                <div className="container">
+                <div className="container mt-5 pt-5">
                     <div className="row">
                            <div className="col-10 mx-auto col-md-6 my-3">
-                               <button type="button" className="btn btn-warning mb-5 text-capitalize">back to product list</button>
+                               <button type="button" className="btn btn-warning mb-5 text-capitalize"
+                               onClick={()=>handleIndex(1)}
+                               >back to product list</button>
                                <img src={avatar} className="d-block w-100" alt="product"/>
                            </div>
 

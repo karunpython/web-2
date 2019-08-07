@@ -6,8 +6,13 @@ import ProductDetails from './ProductDetails'
 export default class Product extends Component {
    
     state={
+        pageIndex:1,
+        details_id:33,
         search:''
     }
+
+
+   
 
 
     handleChange =(e)=>{
@@ -24,15 +29,41 @@ export default class Product extends Component {
 
     }
 
+    displayPage =(index)=>{
+        switch(index){
+            default:
+            case 1:
+                return(<ProductList value={this.state.search}
+                    handleDetails={this.handleDetails}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    /> )  
+            case 0:
+                return(<ProductDetails 
+                       id={this.state.details_id}
+                       handleIndex={this.handleIndex}
+                    />)          
+        }
+    }
+
+    handleIndex = index =>{
+        this.setState({
+            pageIndex:index
+        })
+    }
+
+    handleDetails=(index,id)=>{
+        this.setState({
+            pageIndex:index,
+            details_id:id
+        })
+    }
+
+
     render() {
         return (
             <Fragment>
-               <ProductList
-                value={this.state.search}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                />     
-               {/* <ProductDetails id={123}/>      */}
+              {this.displayPage(this.state.pageIndex)}
             </Fragment>
         )
     }
