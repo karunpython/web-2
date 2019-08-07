@@ -17,6 +17,7 @@ export default function Menu() {
                 <div className="collapse navbar-collapse" id="myMenu">
                     <ul className="navbar-nav ml-auto pl-5 custom-nav">
                         <li className="nav-item"><NavLink exact activeClassName="selected" to="/" className="nav-link">Home</NavLink></li>
+                        <li className="nav-item"><NavLink activeClassName="selected" to="/product" className="nav-link">Product</NavLink></li>
                         <li className="nav-item"><NavLink activeClassName="selected" to="/users" className="nav-link">Users</NavLink></li>
                         <li className="nav-item"><NavLink activeClassName="selected" to="/services" className="nav-link">Services</NavLink></li>
                         <li className="nav-item"><NavLink activeClassName="selected" to="/courses" className="nav-link">Courses</NavLink></li>
