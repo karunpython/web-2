@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import UserDetails from './UserDetails'
-import {Route,Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 export default class UserList extends Component {
     state = { 
-        students: [
-           { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-           { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-           { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-           { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
-        ],
+        users: [],
         isClick:false,
         id:0,
         name:'',
+     }
+
+     componentDidMount(){
+         axios.get('http://localhost:5000/')
+              .then(res=>{
+                  this.setState({users:res.data.result})
+              })
      }
 
      handleClick=(data)=>{
@@ -38,8 +39,9 @@ export default class UserList extends Component {
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Age</th>
+                        <th>Mobile</th>
                         <th>Email</th>
+                        <th>Message</th>
                         <th>View</th>
                     </tr>
                 </thead>
@@ -58,15 +60,16 @@ export default class UserList extends Component {
 
 
     renderTableData() {
-        return this.state.students.map((data, index) => {
-           const { id, name, age, email } = data //destructuring
+        return this.state.users.map(data => {
+           const { uid, name, mobile, email,message } = data //destructuring
            return (
-              <tr key={id}>
-                 <td>{id}</td>
+              <tr key={uid}>
+                 <td>{uid}</td>
                  <td>{name}</td>
-                 <td>{age}</td>
+                 <td>{mobile}</td>
                  <td>{email}</td>
-                 <td><Link className="btn btn-primary" key={id} to={`/users/${id}`}>View</Link></td>
+                 <td>{message}</td>
+                 <td><Link className="btn btn-primary" key={uid} to={`/users/${uid}`}>View</Link></td>
                  {/* <td><button  data-item={data} onClick={()=>this.handleClick(data)} >View</button></td> */}
               </tr>
            )

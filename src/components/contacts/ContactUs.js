@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import '../../css/stylesheet.css'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default class ContactUs extends Component {
 
@@ -9,24 +10,46 @@ export default class ContactUs extends Component {
         mobile:'',
         email:'',
         message:'',
+        isLoading:false
     }
 
     changeHandler = (e) =>{
         this.setState({[e.target.name]:e.target.value})
     }
 
-    submitHandler = e =>{
-        e.preventDefault()
-        console.log(this.state)
+    apiCall=()=>{
         axios.post('http://127.0.0.1:5000/contacts',this.state)
         .then(res=>{
-            console.log(res)
+           const jsonData=res.data
+          
+           Swal.fire({
+            type: 'success',
+            title: jsonData.message,
+            showConfirmButton: false,
+            timer: 4000
+          })
+            this.setState({
+                isLoading:jsonData.status,
+                name:'',
+                mobile:'',
+                email:'',
+                message:'',
+            })
+
         }).catch(error=>{
             console.log(error)
         })
     }
 
+    submitHandler = e =>{
+        e.preventDefault()
+        this.apiCall()      
+    }
+
+
+
     render() {
+        console.log(this.state)
         const {name,mobile,email,message}=this.state
         return (
             <div className="container mt-5 pt-5" id="Contact">
