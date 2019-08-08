@@ -1,5 +1,4 @@
 import React, { Component,Fragment } from 'react'
-import ProductSearch from './ProductSearch'
 import ProductList from './ProductList'
 import ProductDetails from './ProductDetails'
 
@@ -10,9 +9,6 @@ export default class Product extends Component {
         details_id:33,
         search:''
     }
-
-
-   
 
 
     handleChange =(e)=>{

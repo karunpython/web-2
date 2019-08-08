@@ -4,7 +4,7 @@ import CarouselSlider from './CarouselSlider'
 import Services from './Services'
 import Course from './Course'
 import Team from './Team'
-import ContactUs from './ContactUs'
+import ContactUs from '../contacts/ContactUs'
 
 function Navigation() {
     return (
