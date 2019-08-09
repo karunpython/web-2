@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './components/nav/Navigation'
 import Recipe from './components/recipe'
+import NearBy from './components/nearby'
 import Services from './components/nav/Services'
 import Course from './components/nav/Course'
 import Team from './components/nav/Team'
@@ -26,6 +27,7 @@ const App = () => (
         <Route exact path="/" component={Navigation} />
         <Route exact path="/users" component={UserList} />
         <Route path="/recipe" component={Recipe} />
+        <Route path="/nearby" component={NearBy} />
         <Route path="/product" component={Product} />
         <Route path="/services" component={Services} />
         <Route path="/courses" component={Course} />
